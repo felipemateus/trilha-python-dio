@@ -61,8 +61,11 @@ def depositar(saldo, valor, extrato, /):
 # A função extrato deve receber os argumentos apenas por posição e nome (Positional only e keyword only).
 # Argumentos posicionais: saldo
 # Argumentos por nome: extrato
-def extrato():
-    pass
+def extrato(saldo, /, *, extrato):
+    print("\n================ EXTRATO ================")
+    print("Não foram realizadas movimentações." if not extrato else extrato)
+    print(f"\nSaldo: R$ {saldo:.2f}")
+    print("==========================================")
 
 
 
@@ -110,10 +113,7 @@ def main():
             
 
         elif opcao == "e":
-            print("\n================ EXTRATO ================")
-            print("Não foram realizadas movimentações." if not extrato else extrato)
-            print(f"\nSaldo: R$ {saldo:.2f}")
-            print("==========================================")
+          extrato(saldo, extrato=extrato)
 
         elif opcao == "q":
             break
